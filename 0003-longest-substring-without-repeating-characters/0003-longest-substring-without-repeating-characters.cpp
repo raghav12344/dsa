@@ -40,7 +40,7 @@ int lengthOfLongestSubstring(string s)
 {
     int mx = 0;
     int l = 0, r = 0;
-    unordered_set<char> st;
+    set<char> st;
     
     while (r < s.length())
     {
