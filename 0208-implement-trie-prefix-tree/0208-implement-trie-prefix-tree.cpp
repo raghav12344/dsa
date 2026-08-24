@@ -1,10 +1,11 @@
 class Trie {
 public:
     bool isLeaf;
-    vector<Trie*> children;
+    Trie *children[26];
     Trie() {
         isLeaf=false;
-        children.resize(26,NULL);
+        for(int i=0;i<26;i++)
+            children[i]=NULL;
     }
     
     void insert(string word) {
