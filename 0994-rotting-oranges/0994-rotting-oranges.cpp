@@ -2,30 +2,13 @@ class Solution {
 public:
     bool isSafe(int i,int j,int n,int m)
     {
-        return(i>=0 && i<n && j>=0 && j<m);
-    }
-    void dfs(vector<vector<int>> &grid,int i,int j,int time)
-    {
-        int n=grid.size();
-        int m=grid[0].size();
-
-        grid[i][j]=time;
-
-        vector<vector<int>> directions={{0,1},{0,-1},{1,0},{-1,0}};
-
-        for(auto dir:directions)
-        {
-            int x=i+dir[0];
-            int y=j+dir[1];
-
-            if((isSafe(x,y,n,m)) && (grid[x][y]==1 || grid[x][y]>time+1))
-                dfs(grid,x,y,time+1);
-        }
+        return (i>=0 && i<n && j>=0 && j<m);
     }
     int orangesRotting(vector<vector<int>>& grid) {
         int n=grid.size();
         int m=grid[0].size();
 
+        queue<pair<int,int>> q;
         int time=0;
 
         for(int i=0;i<n;i++)
@@ -33,19 +16,42 @@ public:
             for(int j=0;j<m;j++)
             {
                 if(grid[i][j]==2)
-                    dfs(grid,i,j,2);
+                    q.push({i,j});
             }
         }
-        for(int i=0;i<n;i++)
+        vector<vector<int>> directions={{0,1},{0,-1},{1,0},{-1,0}};
+
+        while(!q.empty())
         {
-            for(int j=0;j<m;j++)
+            int size=q.size();
+            bool flag=false;
+
+            for(int i=0;i<size;i++)
             {
+                auto [x,y]=q.front();
+                q.pop();
+
+                for(auto dir:directions)
+                {
+                    int nx=x+dir[0];
+                    int ny=y+dir[1];
+
+                    if(isSafe(nx,ny,n,m) && grid[nx][ny]==1)
+                    {
+                        grid[nx][ny]=2;
+                        q.push({nx,ny});
+                        flag=true;
+                    }
+                }
+            }
+            if(flag)
+                time++;
+        }
+        for(int i=0;i<n;i++)
+            for(int j=0;j<m;j++)
                 if(grid[i][j]==1)
                     return -1;
 
-                time=max(time,grid[i][j]-2);
-            }
-        }
         return time;
     }
 };
