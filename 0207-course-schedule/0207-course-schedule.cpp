@@ -26,8 +26,9 @@ public:
         vector<int> visited(numsCourses,0);
 
         for(int i=0;i<numsCourses;i++)
-            if(dfs(adj,visited,i))
-                return false;
+            if(visited[i]==0)
+                if(dfs(adj,visited,i))   // true-> cycle exist false-> cycle doesnt exist
+                    return false;
 
         return true;
     }
