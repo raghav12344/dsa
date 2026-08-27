@@ -4,8 +4,7 @@ public:
     MyQueue() {
         
     }
-    void atlast(int x)
-    {
+    void push(int x) {
         if(st.empty())
         {
             st.push(x);
@@ -14,11 +13,8 @@ public:
 
         int val=st.top();
         st.pop();
-        atlast(x);
+        push(x);
         st.push(val);
-    }
-    void push(int x) {
-        atlast(x);
     }
     
     int pop() {
