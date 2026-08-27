@@ -31,11 +31,11 @@ public:
             auto[x,y]=q.front();
             q.pop();
 
-            if(grid[x][y]=='1')
-            {
-                count++;
-                flood(x,y,grid);
-            }
+            if(grid[x][y]=='0')
+                continue;
+            
+            count++;
+            flood(x,y,grid);
 
         }
         return count;
