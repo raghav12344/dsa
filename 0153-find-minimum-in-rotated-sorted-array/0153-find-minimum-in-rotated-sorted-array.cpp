@@ -7,8 +7,10 @@ public:
             int mid=s+(e-s)/2;
             if(nums[mid]>nums[e])
                 s=mid+1;
-            else
+            else if(nums[mid]<nums[e])
                 e=mid;
+            else
+                e=mid-1;
         }
         return nums[s];
     }
