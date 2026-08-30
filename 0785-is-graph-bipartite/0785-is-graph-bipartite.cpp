@@ -2,8 +2,7 @@ class Solution {
 public:
     bool dfs(vector<vector<int>>& graph,vector<int> &visited,int i,int color)
     {
-        if(visited[i]==color)
-            return false;
+        
         visited[i]=color;
         for(auto v:graph[i])
         {
