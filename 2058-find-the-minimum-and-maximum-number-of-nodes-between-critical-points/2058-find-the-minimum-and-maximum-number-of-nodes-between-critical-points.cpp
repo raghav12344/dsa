@@ -17,25 +17,27 @@ public:
         ListNode *ptr=head->next;
         ListNode *ahead=head->next->next;
         int idx=0;
-        vector<int> critical;
+        int first=-1;
+        int last=-1;
+        int mn=INT_MAX;
         while(ahead!=NULL)
         {
-            if(ptr->val<prev->val && ptr->val<ahead->val)
-                critical.push_back(idx);
-            else if(ptr->val>prev->val && ptr->val>ahead->val)
-                critical.push_back(idx);
+            if((ptr->val<prev->val && ptr->val<ahead->val) || (ptr->val>prev->val && ptr->val>ahead->val))
+            {
+                if(first==-1)
+                    first=idx;
+                if(last!=-1)
+                    mn=min(mn,idx-last);
+                last=idx;
+            }
+            
             idx++;
             ahead=ahead->next;
             ptr=ptr->next;
             prev=prev->next;
         }
-        if(critical.size()<=1)
+        if(first==-1 || first==last)
             return {-1,-1};
-        int mn=INT_MAX;
-        for(int i=0;i<critical.size()-1;i++)
-        {
-            mn=min(critical[i+1]-critical[i],mn);
-        }
-        return {mn,critical[critical.size()-1]-critical[0]};
+        return {mn,last-first};
     }
 };
