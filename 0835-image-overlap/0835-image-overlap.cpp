@@ -1,32 +1,32 @@
 class Solution {
 public:
+    int convolute(vector<vector<int>>& img1, vector<vector<int>>& b_padded,int xs,int ys)
+    {
+        int res=0;
+        for(int r=0;r<img1.size();r++)
+        {
+            for(int c=0;c<img1.size();c++)
+            {
+                res+=img1[r][c]*b_padded[r+xs][c+ys];
+            }
+        }
+        return res;
+    }
     int largestOverlap(vector<vector<int>>& img1, vector<vector<int>>& img2) {
         int n=img1.size();
-        vector<pair<int,int>> o1,o2;
+
+        vector<vector<int>> b_padded(3*n-2,vector<int>(3*n-2,0));
 
         for(int r=0;r<n;r++)
             for(int c=0;c<n;c++)
-            {
-                if(img1[r][c]==1)
-                    o1.push_back({r,c});
-                if(img2[r][c]==1)
-                    o2.push_back({r,c});
-            }
-
-        map<int,int> f;
-
+                b_padded[r+n-1][c+n-1]=img2[r][c];
+        
         int mx=0;
-
-        for(auto [r1,c1]:o1)
+        for(int xs=0;xs<2*n-1;xs++)
         {
-            for(auto [r2,c2]:o2)
+            for(int ys=0;ys<2*n-1;ys++)
             {
-                int dr=r1-r2;
-                int dc=c1-c2;
-
-                int key=dr*100+dc;
-                f[key]++;
-                mx=max(mx,f[key]);
+                mx=max(mx,convolute(img1,b_padded,xs,ys));
             }
         }
         return mx;
