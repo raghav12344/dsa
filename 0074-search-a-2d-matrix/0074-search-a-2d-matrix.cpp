@@ -19,16 +19,16 @@ public:
             s--;
         }
         int i=0;
-        int j=matrix[0].size();
+        int j=matrix[0].size()-1;
 
-        while(i<j)
+        while(i<=j)
         {
             int mid=i+(j-i)/2;
 
             if(matrix[s][mid]==target)
                 return true;
             else if(matrix[s][mid]>target)
-                j=mid;
+                j=mid-1;
             else 
                 i=mid+1;
         }
