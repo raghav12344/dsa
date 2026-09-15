@@ -5,7 +5,7 @@ public:
 
         vector<vector<int>> res;
 
-        for(int i=0;i<nums.size()-2;i++)
+        for(int i=0;i<nums.size();i++)
         {
             if(i>0 && nums[i]==nums[i-1])
                 continue;
