@@ -23,9 +23,8 @@ public:
     }
     int addDigits(int num) {
         while(count(num)>1)
-        {
             num=sum(num);
-        }
+        
         return num;
     }
 };
