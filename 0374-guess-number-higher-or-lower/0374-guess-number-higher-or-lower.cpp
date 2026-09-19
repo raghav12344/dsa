@@ -19,15 +19,12 @@ public:
 
             int g=guess(mid);
             if(g==0)
-            {
-                res=mid;
-                break;
-            }
+                return mid;
             else if(g==-1)
-                e=mid;
+                e=mid-1;
             else 
-            s=mid+1;
+                s=mid+1;
         }
-        return res;
+        return 0;
     }
 };
