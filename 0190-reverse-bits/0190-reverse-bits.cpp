@@ -8,7 +8,6 @@ public:
             n=n>>1;
             ans=ans<<1;
             ans=ans|b;
-            
         }
         return ans;
     }
