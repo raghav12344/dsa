@@ -43,14 +43,12 @@ int lengthOfLongestSubstring(string s)
     {
         if (st.find(s[r]) == st.end())
         {
-            // Character not in set, insert it
             st.insert(s[r]);
             mx = max(mx, r - l + 1);
             r++;
         }
         else
         {
-            // Character already exists, remove from left
             st.erase(s[l]);
             l++;
         }
