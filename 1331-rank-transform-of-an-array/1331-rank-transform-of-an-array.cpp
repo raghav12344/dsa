@@ -5,7 +5,7 @@ public:
 
         for(auto v:arr)
             st.insert(v);
-        map<int,int> mp;
+        unordered_map<int,int> mp;
         int r=1;
         for(auto v:st)
         {
