@@ -12,24 +12,15 @@ public:
             if(s[i]=='(')
             {
                 int j=s.find(')',i);
-
                 string rep=s.substr(i+1,j-i-1);
-                
-
                 if(mp.find(rep)!=mp.end())
-                {
                     res+=mp[rep];
-                }
                 else
-                {
                     res+='?';
-                }
                 i=j;
             }
             else 
-            {
                 res+=s[i];
-            }
             i++;
         }
         return res;
