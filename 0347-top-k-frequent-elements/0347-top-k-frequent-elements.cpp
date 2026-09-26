@@ -17,6 +17,5 @@ public:
             k--;
         }
         return ans;
-        
     }
 };
