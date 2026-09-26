@@ -11,15 +11,9 @@ public:
         {
             if(s[i]=='(')
             {
-                int j=i+1;
-                string rep="";
-                while(j<s.size())
-                {
-                    if(s[j]==')')
-                        break;
-                    rep+=s[j];
-                    j++;
-                }
+                int j=s.find(')',i);
+
+                string rep=s.substr(i+1,j-i-1);
                 
 
                 if(mp.find(rep)!=mp.end())
