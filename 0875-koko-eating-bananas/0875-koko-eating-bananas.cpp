@@ -6,15 +6,11 @@ public:
         while(h>0 && i<piles.size())
         {
             if(piles[i]<=k)
-            {
                 h--;
-                i++;
-            }
             else 
-            {
                 h=h-ceil(1.0*piles[i]/k);
-                i++;
-            }
+            i++;
+        
         }
         return i==piles.size() && h>=0;
     }
