@@ -4,7 +4,6 @@ public:
     {
         if(i>=grid.size() || j>=grid[0].size())
             return false;
-
         if(grid[i][j]=='(')
             count++;
         else
@@ -21,7 +20,6 @@ public:
         if(dp[i][j][count]!=-1)
             return dp[i][j][count];
         return dp[i][j][count]=(recur(grid,count,i+1,j,dp) || recur(grid,count,i,j+1,dp));
-
     }
     bool hasValidPath(vector<vector<char>>& grid) {
         if((grid.size()+grid[0].size()-1)%2!=0)
