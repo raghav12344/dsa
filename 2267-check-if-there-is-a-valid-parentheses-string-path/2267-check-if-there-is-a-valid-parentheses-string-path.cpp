@@ -24,6 +24,8 @@ public:
 
     }
     bool hasValidPath(vector<vector<char>>& grid) {
+        if((grid.size()+grid[0].size()-1)%2!=0)
+            return false;
         vector<vector<vector<int>>> dp(grid.size(),vector<vector<int>>(grid[0].size(),vector<int>(grid.size()+grid[0].size(),-1)));
         return recur(grid,0,0,0,dp);
     }
