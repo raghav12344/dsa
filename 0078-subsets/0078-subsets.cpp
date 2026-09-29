@@ -8,7 +8,6 @@ public:
             res.push_back(temp);
             return ;
         }
-
         recur(nums,temp,i+1);
         temp.push_back(nums[i]);
         recur(nums,temp,i+1);
