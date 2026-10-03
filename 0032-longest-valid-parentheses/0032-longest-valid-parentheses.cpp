@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // stack solution 
     // int longestValidParentheses(string s) {
     //     int ans=0;
     //     stack<int> st;
@@ -37,7 +38,6 @@ public:
                 else
                 {
                     int j=i-dp[i-1]-1;
-
                     if(j>=0 && s[j]=='(')
                     {
                         dp[i]=dp[i-1]+2;
