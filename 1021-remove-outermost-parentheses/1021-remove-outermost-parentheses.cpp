@@ -5,14 +5,12 @@ public:
         int opened=0;
         for(char c:s)
         {
-            if(c=='(' && opened++>0)
-            {
-                res+=c;
-            }
-            if(c==')' && opened-->1)
-            {
-                res+=c;
-            }
+            if(c==')')
+                opened--;
+            if(opened)
+                res.push_back(c);
+            if(c=='(')
+                opened++;
         }
         return res;
     }
