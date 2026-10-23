@@ -1,9 +1,8 @@
 class Solution {
 public:
     int sortPermutation(vector<int>& nums) {
-        int n=nums.size();
         int res=INT_MAX;
-        for(int i=0;i<n;i++)
+        for(int i=0;i<nums.size();i++)
         {
             if(nums[i]==i)
                 continue;
