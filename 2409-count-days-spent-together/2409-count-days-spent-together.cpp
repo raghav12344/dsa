@@ -1,7 +1,12 @@
 class Solution {
 public:
     int countDaysTogether(string arriveAlice, string leaveAlice, string arriveBob, string leaveBob) {
-        int days[]={0,0,31,59,90,120,151,181,212,243,273,304,334};
+        int normaldays[]={0,31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        vector<int> days;
+        days.push_back(0);
+        for(int i=0;i<12;i++)
+            days.push_back(normaldays[i]+days[days.size()-1]);
+        
         int aa=days[stoi(arriveAlice.substr(0,2))]+stoi(arriveAlice.substr(3,2));
         int la=days[stoi(leaveAlice.substr(0,2))]+stoi(leaveAlice.substr(3,2));
 
@@ -13,7 +18,7 @@ public:
             arr[i]++;
         for(int i=ab;i<=lb;i++)
             arr[i]++;
-
+            
         int count=0;
         for(int i=1;i<366;i++)
             if(arr[i]==2)
