@@ -2,8 +2,10 @@ class Solution {
 public:
     int countDaysTogether(string arriveAlice, string leaveAlice, string arriveBob, string leaveBob) {
         int normaldays[]={0,31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
         vector<int> days;
         days.push_back(0);
+
         for(int i=0;i<12;i++)
             days.push_back(normaldays[i]+days[days.size()-1]);
         
@@ -25,6 +27,5 @@ public:
                 count++;
             
         return count;
-
     }
 };
