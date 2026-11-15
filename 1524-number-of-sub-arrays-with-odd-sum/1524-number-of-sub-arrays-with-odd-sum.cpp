@@ -2,10 +2,7 @@ class Solution {
 public:
     int numOfSubarrays(vector<int>& arr) {
         const int mod=1e9+7;
-        int count=0;
-        int psum=0;
-        int oc=0;
-        int ec=1;
+        int count=0,psum=0,oc=0,ec=1;
         for(auto v:arr)
         {
             psum+=v;
